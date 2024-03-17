@@ -1,6 +1,11 @@
 <mxfile host="65bd71144e">
+<<<<<<< HEAD
+    <diagram id="FrBvODn-8kJGCTtvEdht" name="Page-1">
+        <mxGraphModel dx="1019" dy="827" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+=======
     <diagram id="nAtzrpWr3IblazKCTd-Q" name="Page-1">
         <mxGraphModel dx="1089" dy="875" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+>>>>>>> c15f5756c93787006d69552b124833f5a310f99d
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -64,6 +69,32 @@
                 <mxCell id="21" value="Authentification" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="392" y="303" width="121" height="47" as="geometry"/>
                 </mxCell>
+<<<<<<< HEAD
+                <mxCell id="22" value="Filter et chercher" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="121.5" y="15" width="121" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="23" value="Contacter un YouSaver" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="126.5" y="70" width="121" height="47" as="geometry"/>
+                </mxCell>
+                <mxCell id="24" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="22">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="25" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="28" target="23">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="26" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="28" target="29">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="27" style="edgeStyle=none;html=1;exitX=0.5;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="28" target="8">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="28" value="Person besion sang" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="-77" y="92" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="29" value="voir la liste des donneurs" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="126.5" y="133" width="121" height="47" as="geometry"/>
+                </mxCell>
+=======
                 <mxCell id="22" value="Filter&amp;nbsp;" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="130" y="47" width="121" height="47" as="geometry"/>
                 </mxCell>
@@ -94,6 +125,7 @@
                 <mxCell id="31" value="chercher" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
                     <mxGeometry x="114" y="-4" width="121" height="47" as="geometry"/>
                 </mxCell>
+>>>>>>> c15f5756c93787006d69552b124833f5a310f99d
             </root>
         </mxGraphModel>
     </diagram>
