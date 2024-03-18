@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //route for auth
 
@@ -28,3 +29,6 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 //route for admin
 Route::get('/dashboard', [AdminController::class, 'create'])->name('dashboard');
+
+
+Route::get('/', [UserController::class, 'create'])->name('home');

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="shortcut icon" href="assets/images/fav.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather&display=swap" rel="stylesheet">
     <style>
         .input-group-append {
             cursor: pointer;
@@ -14,12 +16,22 @@
     </style>
 </head>
 <body>
+    <header class="navbar navbar-expand-lg navbar-white bg-white shadow sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ route('home') }}" style="color: #FF204E;"><span style="color: #A0153E;" class="nav-brand-two">You</span>Save</a>
 
-<header class="navbar navbar-expand-lg navbar-white bg-white shadow sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="" style="color: #FF204E;"><span style="color: #A0153E;" class="nav-brand-two">You</span>Save</a>
-    </div>
-</header>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+
 
 @yield('content')
 
