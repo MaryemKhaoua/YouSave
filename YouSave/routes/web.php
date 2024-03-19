@@ -34,3 +34,13 @@ Route::get('/dashboard', [AdminController::class, 'create'])->name('dashboard');
 Route::get('/', [UserController::class, 'create'])->name('home');
 Route::get('/searchpage', [UserController::class, 'searchPage'])->name('search.page');
 Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page');
+//----------------------route for type blood pages---------------------------
+Route::get('/aplus', [UserController::class, 'aplus'])->name('apropos.page');
+Route::get('/amoins', [UserController::class, 'amoins'])->name('amoins.page');
+Route::get('/bplus', [UserController::class, 'bplus'])->name('bplus.page');
+Route::get('/bmoins', [UserController::class, 'bmoins'])->name('bmoins.page');
+Route::get('/abplus', [UserController::class, 'abplus'])->name('abplus.page');
+Route::get('/abmoins', [UserController::class, 'abmoins'])->name('abmoins.page');
+Route::get('/oplus', [UserController::class, 'oplus'])->name('oplus.page');
+Route::get('/omoins', [UserController::class, 'omoins'])->name('omoins.page');
+//--------------end route blood type --------------------------------------
