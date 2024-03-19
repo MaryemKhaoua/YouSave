@@ -40,11 +40,11 @@
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <label for="form3Example1c" class="form-label" style="color: #ae0505;">Type De Sang</label>
+                                        <label for="blood_type" class="form-label" style="color: #ae0505;">Type De Sang</label>
                                         <div class="d-flex flex-row align-items-center">
                                             <i class="fa-solid fa-droplet fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <select name="blood_type" id="">
+                                                <select name="blood_type" id="blood_type" class="form-select">
                                                     <option value="1">A+</option>
                                                     <option value="2">O+</option>
                                                 </select>
@@ -52,11 +52,11 @@
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <label for="form3Example1c" class="form-label" style="color: #ae0505;">Ville</label>
+                                        <label for="city" class="form-label" style="color: #ae0505;">Ville</label>
                                         <div class="d-flex flex-row align-items-center">
                                             <i class="fa-solid fa-city fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <select name="city" id="">
+                                                <select name="city" id="city" class="form-select">
                                                     <option value="1">Safi</option>
                                                     <option value="2">Youssofia</option>
                                                 </select>
@@ -64,11 +64,11 @@
                                         </div>
                                     </div>
                                     <div class="mb-4">
-                                        <label for="form3Example1c" class="form-label" style="color: #ae0505;">Prêt à donner</label>
+                                        <label for="disponibility" class="form-label" style="color: #ae0505;">Prêt à donner</label>
                                         <div class="d-flex flex-row align-items-center">
                                             <i class="fa-solid fa-hand-holding-hand fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <select name="disponibility" id="">
+                                                <select name="disponibility" id="disponibility" class="form-select">
                                                     <option value="1">Oui</option>
                                                     <option value="0">Pas maintenant</option>
                                                 </select>
