@@ -298,14 +298,38 @@
         <p id="benif">De nombreuses variables peuvent avoir un impact sur notre inventaire comme la météo,<br> les vacances ou les événements tragiques.<br> Vous trouverez ci-dessous un aperçu de nos niveaux de stocks pour tous les groupes sanguins.</p>
         <div >
             <div class="blood">
-                <div class="blood-type-shape" title="A+">A+</div>
-                <div class="blood-type-shape" title="A-">A-</div>
-                <div class="blood-type-shape" title="B+">B+</div>
-                <div class="blood-type-shape" title="B-">B-</div>
-                <div class="blood-type-shape" title="AB+">AB+</div>
-                <div class="blood-type-shape" title="AB-">AB-</div>
-                <div class="blood-type-shape" title="O+">O+</div>
-                <div class="blood-type-shape" title="O-">O-</div>
+                <a href="{{ route('apropos.page') }}">
+                    <div class="blood-type-shape" title="A+">A+</div>
+                </a>
+
+                <a href="{{ route('amoins.page') }}">
+                    <div class="blood-type-shape" title="A-">A-</div>
+                </a>
+
+                <a href="{{ route('bplus.page') }}">
+                    <div class="blood-type-shape" title="B+">B+</div>
+                </a>
+
+                <a href="{{ route('bmoins.page') }}">
+                    <div class="blood-type-shape" title="B-">B-</div>
+                </a>
+
+                <a href="{{ route('abplus.page') }}">
+                    <div class="blood-type-shape" title="AB+">AB+</div>
+                </a>
+
+                <a href="{{ route('abmoins.page') }}">
+                    <div class="blood-type-shape" title="AB-">AB-</div>
+                </a>
+
+                <a href="{{ route('oplus.page') }}">
+                    <div class="blood-type-shape" title="O+">O+</div>
+                </a>
+
+                <a href="{{ route('omoins.page') }}">
+                    <div class="blood-type-shape" title="O-">O-</div>
+                </a>
+
             </div>
         </div>
     </section>
