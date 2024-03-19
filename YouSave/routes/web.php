@@ -30,5 +30,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 //route for admin
 Route::get('/dashboard', [AdminController::class, 'create'])->name('dashboard');
 
-
+//route for user
 Route::get('/', [UserController::class, 'create'])->name('home');
+Route::get('/searchpage', [UserController::class, 'searchPage'])->name('search.page');
+Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page');
