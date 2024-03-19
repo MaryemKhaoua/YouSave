@@ -298,7 +298,7 @@
         <p id="benif">De nombreuses variables peuvent avoir un impact sur notre inventaire comme la météo,<br> les vacances ou les événements tragiques.<br> Vous trouverez ci-dessous un aperçu de nos niveaux de stocks pour tous les groupes sanguins.</p>
         <div >
             <div class="blood">
-                <a href="{{ route('apropos.page') }}">
+                <a href="{{ route('aplus.page') }}">
                     <div class="blood-type-shape" title="A+">A+</div>
                 </a>
 

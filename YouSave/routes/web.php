@@ -35,7 +35,7 @@ Route::get('/', [UserController::class, 'create'])->name('home');
 Route::get('/searchpage', [UserController::class, 'searchPage'])->name('search.page');
 Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page');
 //----------------------route for type blood pages---------------------------
-Route::get('/aplus', [UserController::class, 'aplus'])->name('apropos.page');
+Route::get('/aplus', [UserController::class, 'aplus'])->name('aplus.page');
 Route::get('/amoins', [UserController::class, 'amoins'])->name('amoins.page');
 Route::get('/bplus', [UserController::class, 'bplus'])->name('bplus.page');
 Route::get('/bmoins', [UserController::class, 'bmoins'])->name('bmoins.page');
