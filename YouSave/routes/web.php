@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CityController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,6 +30,9 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 //route for admin
 Route::get('/dashboard', [AdminController::class, 'create'])->name('dashboard');
+Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
+Route::post('/cities', [CityController::class, 'store'])->name('cities.store');
+
 
 //route for user
 Route::get('/', [UserController::class, 'create'])->name('home');
