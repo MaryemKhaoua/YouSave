@@ -63,7 +63,7 @@
             <ul class="list-unstyled">
                 <li><h5>dashboard</h5></li>
                 <li><a href="">BLOOD TYPES</a></li>
-                <li><a href="">CITIES</a></li>
+                <li><a href="{{ route('cities.index') }}">CITIES</a></li>
                 <li><a href="">USERS</a></li>
                 <li><a href="">STATISTIQUES</a></li>
             </ul>
