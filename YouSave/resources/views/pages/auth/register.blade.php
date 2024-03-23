@@ -45,20 +45,25 @@
                                             <i class="fa-solid fa-droplet fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <select name="blood_type" id="blood_type" class="form-select">
-                                                    <option value="1">A+</option>
-                                                    <option value="2">O+</option>
+                                                    <option value="" selected>Choose...</option>
+                                                    @foreach($bloods as $blood)
+                                                    <option value="{{ $blood->id }}">{{ $blood->type }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="mb-4">
                                         <label for="city" class="form-label" style="color: #ae0505;">Ville</label>
                                         <div class="d-flex flex-row align-items-center">
                                             <i class="fa-solid fa-city fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
                                             <div class="form-outline flex-fill mb-0">
                                                 <select name="city" id="city" class="form-select">
-                                                    <option value="1">Safi</option>
-                                                    <option value="2">Youssofia</option>
+                                                    <option value="" selected>Choose...</option>
+                                                    @foreach($cities as $city)
+                                                    <option value="{{ $city->id }}">{{ $city->name }}</option>
+                                                    @endforeach
                                                 </select>
                                             </div>
                                         </div>
