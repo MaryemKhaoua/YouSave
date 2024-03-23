@@ -1,36 +1,50 @@
 @extends('layouts.main')
+
 @section('content')
 <style>
-     #srch{
-        text-align: center;
-        margin-top: 50px;
-        color: #670505;
+    .blood-donation-heading {
+        color: #ae0505;
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .user-card {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+
+    .user-name {
+        color: #ae0505;
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+
+    .user-details {
+        color: #495057;
+        font-size: 16px;
     }
 </style>
+
 <div class="container mt-5">
-    <h1 class="mb-4 " id="srch">Trouvez des YouSavers près de vous</h1>
-    <form action="" method="GET">
-        <div class="row mb-3">
-            <div class="col-md-6">
-                <label for="city" class="form-label">Ville :</label>
-                <input type="text" class="form-control" id="city" name="city" placeholder="Entrez la ville">
-            </div>
-            <div class="col-md-6">
-                <label for="blood_type" class="form-label">Type de Sang :</label>
-                <select class="form-select" id="blood_type" name="blood_type">
-                    <option value="" selected disabled>Choisissez le type de sang</option>
-                    <option value="A+">A+</option>
-                    <option value="A-">A-</option>
-                    <option value="B+">B+</option>
-                    <option value="B-">B-</option>
-                    <option value="AB+">AB+</option>
-                    <option value="AB-">AB-</option>
-                    <option value="O+">O+</option>
-                    <option value="O-">O-</option>
-                </select>
+    <h1 class="blood-donation-heading">Trouvez des donneurs près de vous</h1>
+    <div class="row">
+        @foreach($users as $user)
+        <div class="col-md-4 mb-4">
+            <div class="user-card">
+                <div class="user-info">
+                    <h5 class="user-name">{{ $user->nom }} {{ $user->prenom }}</h5>
+                    <p class="user-details">Ville: {{ $user->city->name }}</p>
+                    <p class="user-details">Type de Sang: {{ $user->bloodType->type }}</p>
+                    <p class="user-details">Téléphone: {{ $user->tele }}</p>
+                </div>
             </div>
         </div>
-        <button type="submit" class="btn btn-danger">Rechercher</button>
-    </form>
+        @endforeach
+    </div>
 </div>
 @endsection

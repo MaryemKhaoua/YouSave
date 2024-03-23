@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 //route for auth
 
-Route::get('/register', [AuthController::class, 'create'])->name('register');
+Route::get('/register', [AuthController::class, 'index'])->name('register');
 Route::post('/register', [AuthController::class, 'store'])->name('user.register');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('user.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
@@ -36,8 +36,12 @@ Route::post('/cities', [CityController::class, 'store'])->name('cities.store');
 
 //route for user
 Route::get('/', [UserController::class, 'create'])->name('home');
-Route::get('/searchpage', [UserController::class, 'searchPage'])->name('search.page');
+// Route::get('/searchpage', [UserController::class, 'searchPage'])->name('search.page');
 Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page');
+
+Route::get('/users', [UserController::class, 'showUsers'])->name('users.show');
+
+
 //----------------------route for type blood pages---------------------------
 Route::get('/aplus', [UserController::class, 'aplus'])->name('aplus.page');
 Route::get('/amoins', [UserController::class, 'amoins'])->name('amoins.page');
@@ -48,3 +52,5 @@ Route::get('/abmoins', [UserController::class, 'abmoins'])->name('abmoins.page')
 Route::get('/oplus', [UserController::class, 'oplus'])->name('oplus.page');
 Route::get('/omoins', [UserController::class, 'omoins'])->name('omoins.page');
 //--------------end route blood type --------------------------------------
+//--------------user auth---------
+Route::get('/profil', [UserController::class, 'profil'])->name('user.profil');

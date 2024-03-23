@@ -47,7 +47,7 @@ a{
             </form>
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('search.page') }}">List des sonneurs</a>
+                    <a class="nav-link" href="{{ route('users.show') }}">List des sonneurs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('apropos.page') }}">A propos</a>
