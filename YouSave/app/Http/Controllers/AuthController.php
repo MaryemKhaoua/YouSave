@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BloodType;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -15,16 +17,22 @@ class AuthController extends Controller
      */
     public function index()
     {
+        $bloods = BloodType::all();
+        $cities = City::all();
+
+        return view('pages.auth.register', compact('bloods','cities'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        return view("pages.auth.register");
+    // public function create()
+    // {
+    //     $bloods = BloodType::all();
 
-    }
+    //     return view('pages.auth.register', compact('bloods'));
+
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -37,7 +45,7 @@ class AuthController extends Controller
         // $request->validate([
         //     'nom' => 'required',
         //     'prenom' => 'required',
-        //     'tele' => 'required|regex:/^[0-9]{10}$/',
+        //     'tele' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
         //     'disponibility' => 'required',
         //     'email' => 'required|email|unique:users',
         //     'password' => 'required|min:8',
@@ -46,7 +54,7 @@ class AuthController extends Controller
          User::create([
             'nom' => $request->nom,
             'prenom' => $request->input('prenom'),
-            'tele' => $request->input('tele'),
+            'tele' => $request->input('tele') ?? '',
             'disponibility' => $request->input('disponibility'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),

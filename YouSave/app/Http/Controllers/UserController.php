@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -10,9 +11,9 @@ class UserController extends Controller
         return view('pages.home');
     }
 
-    public function searchPage(){
-        return view('pages.cherche');
-    }
+    // public function searchPage(){
+    //     return view('pages.cherche');
+    // }
 
     public function apropos(){
         return view('pages.apropos');
@@ -43,5 +44,18 @@ class UserController extends Controller
     public function omoins(){
         return view('pages.blood.Omoins');
     }
-//------------------------end view blood type
+//------------------------end view blood type---------------------
+
+//-----------------profil view------------------------------------
+
+    public function profil(){
+        return view('pages.profil');
+    }
+    //-------------- list donneurs---------------
+
+    public function showUsers(Request $users)
+    {
+        $users = User::all();
+        return view('pages.cherche', compact('users'));
+    }
 }

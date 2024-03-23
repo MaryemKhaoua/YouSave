@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('tele')->nullable();
+            $table->string('tele')->nullable(false);
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('disponibility')->default(0);
