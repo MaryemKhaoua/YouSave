@@ -16,23 +16,24 @@
     }
 
     .buttons {
-        margin-top: 20px;
-    }
+    margin-top: 20px;
+}
 
-    .buttons button {
-        margin-right: 10px;
-        padding: 10px 20px;
-        background-color: #f12a2a;
-        color: #fff;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        position: relative;
-    }
+.buttons a.custom-button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    background-color: #f12a2a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none; 
+}
 
-    .buttons button:hover {
-        background-color: #970707;
-    }
+.buttons a.custom-button:hover {
+    background-color: #970707;
+}
 
     .benif{
         text-align: center;
@@ -87,7 +88,7 @@
     }
 
     .compatible-icon {
-        color: #28a745;
+        color: red;
     }
 
     .blood-type-shape {
@@ -116,9 +117,10 @@
                 <h1>Sauvez des vies dès aujourd'hui</h1>
                 <p>Chaque année, un million de vies sont sauvées grâce à votre générosité. En donnant votre sang, vous contribuez à sauver des vies et à faire une différence concrète. Que ce soit des plaquettes, du plasma ou même du sang placentaire, chaque don compte. Rejoignez-nous dans cette noble cause et faites partie du mouvement pour un monde meilleur</p>
                 <div class="buttons">
-                    <button>Je donne mon sang <span class="heart-icon">&hearts;</span></button>
-                    <button id='btnS'>Besoin de sang</button>
+                    <a href="{{ route('register') }}" class="btn btn-primary custom-button">Je donne mon sang <span class="heart-icon">&hearts;</span></a>
+                    <a href="{{ route('users.show') }}" id='btnS' class="btn btn-secondary custom-button">Besoin de sang</a>
                 </div>
+
             </div>
             <div class="right-side">
                 <img src="https://linatabara3.com/imgs/homeHeroImage.svg" alt="Image description">
@@ -203,94 +205,95 @@
                 <tbody>
                     <tr>
                         <td>A+</td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                         <td></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                     <tr>
                         <td>A-</td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                     <tr>
                         <td>B+</td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                     <tr>
                         <td>B-</td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                     <tr>
                         <td>AB+</td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                     <tr>
                         <td>AB-</td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                     <tr>
                         <td>O+</td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
-                        <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                     <tr>
                         <td>O-</td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
                         <td></td>
-                        <td><i class="fas fa-check-circle compatible-icon"></i></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><i class="fas fa-tint compatible-icon"></td>
                     </tr>
                 </tbody>
             </table>
+
         </div>
     </section>
     <section>

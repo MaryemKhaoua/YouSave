@@ -25,8 +25,27 @@
     }
 
     .user-details {
-        color: #495057;
+        color: #591f1f;
         font-size: 16px;
+        font-weight: bolder;
+        margin-bottom: 5px;
+    }
+    .spn{
+        font-weight: bold;
+        color: #1f0303;
+
+    }
+
+    .icon-phone {
+        color: green;
+    }
+
+    .icon-type {
+        color: red;
+    }
+
+    .icon-city {
+        color: rgb(112, 49, 49);
     }
 </style>
 
@@ -38,9 +57,17 @@
             <div class="user-card">
                 <div class="user-info">
                     <h5 class="user-name">{{ $user->nom }} {{ $user->prenom }}</h5>
-                    <p class="user-details">Ville: {{ $user->city->name }}</p>
-                    <p class="user-details">Type de Sang: {{ $user->bloodType->type }}</p>
-                    <p class="user-details">Téléphone: {{ $user->tele }}</p>
+                    <p class="user-details"><i class="fas fa-map-marker-alt icon icon-city"></i>  <span class="spn">Ville:</span> {{ $user->city->name }}</p>
+                    <p class="user-details"><i class="fas fa-tint icon icon-type"></i>  <span class="spn">Type de Sang:</span> {{ $user->bloodType->type }}</p>
+                    <p class="user-details"><i class="fas fa-phone icon icon-phone"></i>  <span class="spn">Téléphone:</span> {{ $user->tele }}</p>
+                    <p class="user-details">
+                        @if($user->disponibility == 1)
+                            <i class="fas fa-check-circle text-success"></i> Disponible
+                        @else
+                            <i class="fas fa-times-circle text-danger"></i> Pas Disponible
+                        @endif
+                    </p>
+
                 </div>
             </div>
         </div>

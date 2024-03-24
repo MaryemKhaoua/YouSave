@@ -32,6 +32,10 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/dashboard', [AdminController::class, 'create'])->name('dashboard');
 Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
 Route::post('/cities', [CityController::class, 'store'])->name('cities.store');
+Route::post('/editCity/{id}', [CityController::class, 'updateCity'])->name('cityUpdate');
+Route::get('/editCity/{id}', [CityController::class, 'edit'])->name('edit');
+Route::delete('/cities/{city}', [CityController::class, 'destroy'])->name('cities.destroy');
+
 
 
 //route for user
