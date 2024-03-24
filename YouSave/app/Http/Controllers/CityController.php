@@ -19,24 +19,25 @@ class CityController extends Controller
             'name' => 'required|unique:cities|max:255',
         ]);
 
+        if (City::where('name', $request->name)->exists()) {
+            return redirect()->route('cities.index')
+            ->with('error', 'Une ville avec ce nom existe déjà');
+        }
+
         City::create($request->all());
 
         return redirect()->route('cities.index')
-            ->with('success', 'La ville a été créée avec succès.');
-    }
-    public function show($id)
-    {
-        $city = City::findOrFail($id);
-        return view('cities.show', compact('city'));
+            ->with('success', 'La ville a été créée avec succès');
     }
 
-    public function edit($id)
+    public function edit(string $id)
     {
-        $city = City::findOrFail($id);
-        return view('cities.edit', compact('city'));
+        $city = City::findOrfail($id);
+
+        return view('admin.editCity',compact('city'));
     }
 
-    public function update(Request $request, $id)
+    public function updateCity(Request $request, $id)
     {
         $request->validate([
             'name' => 'required|unique:cities|max:255',
@@ -46,7 +47,7 @@ class CityController extends Controller
         $city->update($request->all());
 
         return redirect()->route('cities.index')
-            ->with('success', 'Les détails de la ville ont été mis à jour avec succès.');
+            ->with('success', 'Les détails de la ville ont été mis à jour avec succès');
     }
 
     public function destroy($id)
@@ -55,7 +56,7 @@ class CityController extends Controller
         $city->delete();
 
         return redirect()->route('cities.index')
-            ->with('success', 'La ville a été supprimée avec succès.');
+            ->with('success', 'La ville a été supprimée avec succès');
     }
 
 }
