@@ -104,7 +104,7 @@
                                 </form>
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                <img src="https://img.freepik.com/vecteurs-libre/don-sang-humain-fond-blanc_1308-111266.jpg?t=st=1710713007~exp=1710716607~hmac=2623635d8706d9b41b64441c32ef29f12661ab9d6cf4013badf175304bae7747&w=900" class="img-fluid" alt="Sample image">
+                                <img src="./../images/login.avif" class="img-fluid" alt="Sample image">
                             </div>
                         </div>
                     </div>

@@ -18,7 +18,7 @@
 
         <div class="row">
             <div class="col-md-6">
-                <img src="https://img.freepik.com/vecteurs-libre/illustration-personnes-plates-posant-questions_23-2148921809.jpg?w=740&t=st=1710805345~exp=1710805945~hmac=2c09561927d4d0d935007a34db10d35ee8277a2003a5c650cae4980df6ad3051" alt="Image 1" class="img-fluid mb-3">
+                <img src="./../images/apro1.jpg" alt="Image 1" class="img-fluid mb-3">
             </div>
             <div class="col-md-6 d-flex align-items-start">
                 <div class="text-center">
@@ -30,7 +30,7 @@
 
         <div class="row mt-4">
             <div class="col-md-6 order-md-2">
-                <img src="https://img.freepik.com/vecteurs-libre/caracteres-personnes-tenant-formes-coeur-illustration_53876-32595.jpg?t=st=1710805596~exp=1710809196~hmac=f3ecc10aa17da5c4860497d930f61431ce4b7ed616ce2c54f2fb2db836e96791&w=826" alt="Image 2" class="img-fluid mb-3">
+                <img src="./../images/apro2.jpg" alt="Image 2" class="img-fluid mb-3">
             </div>
             <div class="col-md-6 order-md-1 d-flex align-items-start">
                 <div class="text-center">
@@ -42,7 +42,7 @@
 
         <div class="row mt-4">
             <div class="col-md-6">
-                <img src="https://img.freepik.com/vecteurs-libre/homme-regardant-coeur-travers-illustration-vectorielle-plane-loupe_778687-1172.jpg?t=st=1710805783~exp=1710809383~hmac=726c566d50c1e32baa40d590f439956b621cd0530548e926b161fadc96723a33&w=740" alt="Image 3" class="img-fluid mb-3">
+                <img src="./../images/apro3.jpg" alt="Image 3" class="img-fluid mb-3">
             </div>
             <div class="col-md-6 d-flex align-items-start">
                 <div class="text-center">

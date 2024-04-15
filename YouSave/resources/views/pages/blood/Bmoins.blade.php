@@ -26,7 +26,7 @@
                                 </ul>
                             </div>
                             <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                                <img src="https://www.blood.ca/sites/default/files/icon/blood-types_b-negative_blood-drop.jpg" class="img-fluid" alt="Image">
+                                <img src="./../images/blood-typeB-neg.png" class="img-fluid" alt="Image">
                             </div>
                         </div>
                     </div>
