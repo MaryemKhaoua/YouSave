@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -49,7 +50,8 @@ class UserController extends Controller
 //-----------------profil view------------------------------------
 
     public function profil(){
-        return view('pages.profil');
+        $user = Auth::user();
+        return view('pages.profil', compact('user'));
     }
     //-------------- list donneurs---------------
 

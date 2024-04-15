@@ -97,6 +97,7 @@
         margin-right: 10px;
     }
 </style>
+<a href="{{ route('dashboard') }}" class="btn btn-success">Back</a>
 
 <div class="body">
 

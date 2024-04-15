@@ -28,7 +28,7 @@
     border-radius: 5px;
     cursor: pointer;
     position: relative;
-    text-decoration: none; 
+    text-decoration: none;
 }
 
 .buttons a.custom-button:hover {
@@ -123,7 +123,7 @@
 
             </div>
             <div class="right-side">
-                <img src="https://linatabara3.com/imgs/homeHeroImage.svg" alt="Image description">
+                <img src="https://linatabara3.com/imgs/homeHeroImage.svg" alt="">
             </div>
         </div>
     </section>

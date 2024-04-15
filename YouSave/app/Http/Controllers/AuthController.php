@@ -42,25 +42,23 @@ class AuthController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-        // $request->validate([
-        //     'nom' => 'required',
-        //     'prenom' => 'required',
-        //     'tele' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
-        //     'disponibility' => 'required',
-        //     'email' => 'required|email|unique:users',
-        //     'password' => 'required|min:8',
-        // ]);
+        $request->validate([
+            'tele' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
+        ]);
+        // dd($request->input('tele'));
 
-         User::create([
+        $user =  User::create([
             'nom' => $request->nom,
             'prenom' => $request->input('prenom'),
-            'tele' => $request->input('tele') ?? '',
+            'tele' => $request->input('tele'),
             'disponibility' => $request->input('disponibility'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'city_id' => $request->input('city'),
             'blood_type_id' => $request->input('blood_type'),
         ]);
+        // $user->tele = $request->input('tele');
+        // $user->save();
         return redirect()->route('user.login');
     }
 
