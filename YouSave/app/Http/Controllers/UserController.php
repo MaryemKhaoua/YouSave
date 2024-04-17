@@ -53,6 +53,29 @@ class UserController extends Controller
         $user = Auth::user();
         return view('pages.profil', compact('user'));
     }
+
+    //---------------update profil---------------
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            // 'tele' => 'required|string|max:255',
+            // 'genre' => 'required|string|max:255',
+            // 'disponibility' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'city_id' => 'required|exists:cities,id',
+            'blood_type_id' => 'required|exists:blood_types,id',
+        ]);
+
+        $user = auth()->user();
+        $user->update($request->all());
+
+        return redirect()->back()->with('success', 'Mise à jour du profil réussie');
+    }
+
+
     //-------------- list donneurs---------------
 
     public function showUsers(Request $users)

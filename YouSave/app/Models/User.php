@@ -21,6 +21,7 @@ class User extends Authenticatable
         'nom',
         'prenom',
         'phone',
+        'genre',
         'blood_type_id',
         'city_id',
         'disponibility',
@@ -56,4 +57,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(City::class);
     }
+
+    public function role(){
+        return $this->belongsToMany(Role::class);
+    }
+
 }

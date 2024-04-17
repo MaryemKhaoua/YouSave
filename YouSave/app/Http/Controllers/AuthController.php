@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blood;
 use App\Models\BloodType;
 use App\Models\City;
 use App\Models\User;
@@ -51,14 +52,15 @@ class AuthController extends Controller
             'nom' => $request->nom,
             'prenom' => $request->input('prenom'),
             'tele' => $request->input('tele'),
+            'genre' => $request->input('genre'),
             'disponibility' => $request->input('disponibility'),
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'city_id' => $request->input('city'),
             'blood_type_id' => $request->input('blood_type'),
         ]);
-        // $user->tele = $request->input('tele');
-        // $user->save();
+        $user->tele = $request->input('tele');
+        $user->save();
         return redirect()->route('user.login');
     }
 

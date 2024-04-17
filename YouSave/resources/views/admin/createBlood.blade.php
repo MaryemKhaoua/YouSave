@@ -2,105 +2,11 @@
 
 @section('content')
 
-<style>
-    .body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 5em;
-    }
-
-    h1 {
-        color: #ae0505;
-        text-align: center;
-        margin-bottom: 2em;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 5px;
-        color: #ae0505;
-    }
-
-    input[type="text"] {
-        width: 50%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        box-sizing: border-box;
-    }
-
-    button {
-        background-color: #ae0505;
-        color: #fff;
-        border: none;
-        padding: 8px 12px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-left: 5px;
-    }
-
-    button:hover {
-        background-color: #8b0303;
-    }
-
-    .error-message {
-        color: #ff0000;
-        margin-top: 5px;
-    }
-
-    .city-list {
-        list-style: none;
-        padding: 0;
-    }
-
-    .city-list li {
-        margin-bottom: 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .city-list li .btn-group {
-        display: flex;
-        align-items: center;
-    }
-
-    .city-list li .btn {
-        color: #fff;
-        border-radius: 5px;
-        cursor: pointer;
-        padding: 8px 12px;
-        transition: background-color 0.3s ease;
-    }
-
-    .city-list li .btn-update {
-        background-color: #fb9403;
-        margin-right: 5px;
-    }
-
-    .city-list li .btn-update:hover {
-        background-color: #e58403;
-    }
-
-    .city-list li .btn-delete {
-        background-color: #dc3545;
-    }
-
-    .city-list li .btn-delete:hover {
-        background-color: #c82333;
-    }
-
-    .city-list li span {
-        font-size: 1.1em;
-        color: #333;
-        margin-right: 10px;
-    }
-</style>
+<link rel="stylesheet" type="text/css" href="/css/createbld.css">
 
 <div class="body">
 
-    <h1>Ajouter Ville</h1>
+    <h1>Ajouter type de sang</h1>
     @if ($errors->any())
     <div class="error-message">
         <ul>
@@ -111,38 +17,61 @@
     </div>
     @endif
 
-
-
-    <form method="POST" action="{{ route('cities.store') }}">
+    <form method="POST" action="{{ route('bloods.store') }}">
         @csrf
         <div>
-            <label for="city">Ville:</label>
-            <input type="text" id="city" name="name" value="{{ old('name') }}">
-            <button type="submit">Ajouter Ville</button>
+            <label for="blood">Type:</label>
+            <input type="text" id="blood" name="type" value="{{ old('type') }}">
+            <button type="submit">Ajouter Type</button>
         </div>
     </form>
 
-    <h2>Villes : </h2>
+    <h2>Types : </h2>
 
-    <ul class="city-list">
-        @foreach($cities as $city)
+    <ul class="blood-list">
+        @foreach($bloods as $blood)
         <li>
-            <span>{{ $city->name }}</span>
+            <span>{{ $blood->type }}</span>
             <div class="btn-group">
-                <a  href="{{ route('edit', $city->id) }}" type="button" class="btn btn-update">Update</a>
-                <form method="POST" action="{{ route('cities.destroy',  $city) }}">
+                <button type="button" class="btn btn-update" data-toggle="modal" data-target="#updateModal{{ $blood->id }}">Update</button>
+                <form method="POST" action="{{ route('bloods.destroy', $blood) }}">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-delete">Delete</button>
                 </form>
             </div>
         </li>
+        <!-- Update Modal -->
+        <div class="modal fade" id="updateModal{{ $blood->id }}" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateModalLabel">Update Blood Type</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Update form goes here -->
+                        <form method="POST" action="{{ route('bloods.update', $blood) }}">
+                            @csrf
+                            @method('PUT')
+                            <div class="form-group">
+                                <label for="updateBloodType">New Blood Type</label>
+                                <input type="text" class="form-control" id="updateBloodType" name="type" value="{{ $blood->type }}">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
         @endforeach
     </ul>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 @if(session('success'))
 <script>
     Swal.fire({
@@ -153,16 +82,20 @@
         timer: 1500
     });
 </script>
-{{-- @elseif(session('error'))
+@endif
+
+@if(session('error'))
 <script>
     Swal.fire({
-        position: "top-end",
-        icon: "error",
-        title: "{{ session('error') }}",
+        icon: 'error',
+        title: 'Oops...',
+        text: '{{ session('error') }}',
+        toast: true,
+        position: 'top-end',
         showConfirmButton: false,
-        timer: 1500
+        timer: 3000
     });
-</script> --}}
+</script>
 @endif
 
 @endsection

@@ -40,6 +40,20 @@
                                         </div>
                                     </div>
                                     <div class="mb-4">
+                                        <label for="genre" class="form-label" style="color: #ae0505;">Genre</label>
+                                        <div class="d-flex flex-row align-items-center">
+                                            <i class="fas fa-user fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
+                                            <div class="form-outline flex-fill mb-0">
+                                                <select name="genre" id="genre" class="form-select">
+                                                    <option value="" selected>Choose...</option>
+                                                    <option value="homme">Homme</option>
+                                                    <option value="femme">Femme</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-4">
                                         <label for="blood_type" class="form-label" style="color: #ae0505;">Type De Sang</label>
                                         <div class="d-flex flex-row align-items-center">
                                             <i class="fa-solid fa-droplet fa-lg me-3 fa-fw" style="color: #ae0505;"></i>

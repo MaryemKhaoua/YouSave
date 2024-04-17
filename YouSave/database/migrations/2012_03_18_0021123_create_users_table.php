@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('nom');
             $table->string('prenom');
-            $table->string('tele')->nullable(false);
+            $table->string('tele')->unique();
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('disponibility')->default(0);
+        
             $table->timestamps();
         });
     }

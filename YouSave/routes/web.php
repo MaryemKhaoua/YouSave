@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\BloodTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,12 +30,24 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('user.login
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 //route for admin
-Route::get('/dashboard', [AdminController::class, 'create'])->name('dashboard');
+Route::get('/dashboard', [AdminController::class, 'statistics'])->name('dashboard');
 Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
 Route::post('/cities', [CityController::class, 'store'])->name('cities.store');
 Route::post('/editCity/{id}', [CityController::class, 'updateCity'])->name('cityUpdate');
 Route::get('/editCity/{id}', [CityController::class, 'edit'])->name('edit');
 Route::delete('/cities/{city}', [CityController::class, 'destroy'])->name('cities.destroy');
+Route::get('/bloods', [BloodTypeController::class, 'index'])->name('bloods.index');
+Route::post('/bloods', [BloodTypeController::class, 'store'])->name('bloods.store');
+Route::put('/bloods/{blood}', [BloodTypeController::class, 'update'])->name('bloods.update');
+Route::delete('/bloods/{blood}', [BloodTypeController::class, 'destroy'])->name('bloods.destroy');
+// statistics
+// Route::get('/statistics', [AdminController::class, 'statistics'])->name('admin.statistics');
+
+
+//route for testing error
+
+Route::get('/403', [AdminController::class, 'error'])->name('error');
+
 
 
 
@@ -45,8 +58,11 @@ Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page')
 
 Route::get('/users', [UserController::class, 'showUsers'])->name('users.show');
 
+Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('update.profile');
 
-//----------------------route for type blood pages---------------------------
+
+
+//----------------------route for type blood details pages---------------------------
 Route::get('/aplus', [UserController::class, 'aplus'])->name('aplus.page');
 Route::get('/amoins', [UserController::class, 'amoins'])->name('amoins.page');
 Route::get('/bplus', [UserController::class, 'bplus'])->name('bplus.page');
@@ -56,5 +72,8 @@ Route::get('/abmoins', [UserController::class, 'abmoins'])->name('abmoins.page')
 Route::get('/oplus', [UserController::class, 'oplus'])->name('oplus.page');
 Route::get('/omoins', [UserController::class, 'omoins'])->name('omoins.page');
 //--------------end route blood type --------------------------------------
+
+
+
 //--------------user auth---------
 Route::get('/profil', [UserController::class, 'profil'])->name('user.profil');

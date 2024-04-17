@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+
 <style>
     .profile-container {
         max-width: 800px;
@@ -42,12 +43,18 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="https://img.freepik.com/photos-gratuite/portrait-belle-jeune-femme-coiffure-elegante-lunettes_1142-40217.jpg?t=st=1711244510~exp=1711248110~hmac=cc70f1f2114f995b5fa759bf0874a5c729ee9487e3da02b531a4fca42a2868b5&w=740"
-                            alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        @if ($user->genre == "femme")
+                            <img src="./../images/profil.avif" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        @else
+                            <img src="./../images/homme.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        @endif
                         <h5 class="my-3">{{ $user->nom }} {{ $user->prenom }}</h5>
                         <p class="text-muted mb-1">Donateur</p>
                         <p class="text-muted mb-4">{{ $user->city->name }}</p>
-                        <button class="update-profile-btn">Mettre à jour le profil</button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="update-profile-btn" data-toggle="modal" data-target="#updateProfileModal">
+                            Mettre à jour le profil
+                        </button>
                     </div>
                 </div>
             </div>
@@ -89,10 +96,67 @@
                                 <p class="text-muted mb-0">{{ $user->city->name }}</p>
                             </div>
                         </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Type de sang</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{$user->bloodType->type}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="updateProfileModal" tabindex="-1" role="dialog" aria-labelledby="updateProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateProfileModalLabel">Mettre à jour le profil</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="updateProfileForm" action="{{ route('update.profile') }}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="nom">Nom</label>
+                        <input type="text" class="form-control" id="nom" name="nom" value="{{ $user->nom }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom</label>
+                        <input type="text" class="form-control" id="prenom" name="prenom" value="{{ $user->prenom }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="tele">Telephone</label>
+                        <input type="text" class="form-control" id="tele" name="tele" value="{{ $user->tele }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Ville</label>
+                        <input type="text" class="form-control" id="city" name="city_id" value="{{ $user->city->name }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="blood_type">Type de sang</label>
+                        <input type="text" class="form-control" id="blood_type" name="blood_type_id" value="{{ $user->BloodType->type }}">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+                <a href="#" class="btn btn-info" onclick="document.getElementById('updateProfileForm').submit()">Enregistrer</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection

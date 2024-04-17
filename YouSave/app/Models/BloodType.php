@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class BloodType extends Model
 {
     use HasFactory;
+    protected $fillable =
+    [
+        'type'
+    ];
 }
