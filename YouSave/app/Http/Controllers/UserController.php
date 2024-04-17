@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BloodType;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -81,6 +83,10 @@ class UserController extends Controller
     public function showUsers(Request $users)
     {
         $users = User::all();
-        return view('pages.cherche', compact('users'));
+        $bloods = BloodType::all();
+        $cities = City::all();
+
+        return view('pages.cherche', compact('users','bloods','cities'));
     }
+
 }

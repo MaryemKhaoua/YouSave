@@ -21,7 +21,7 @@ class CityController extends Controller
 
         if (City::where('name', $request->name)->exists()) {
             return redirect()->route('cities.index')
-            ->with('error', 'Une ville avec ce nom existe déjà');
+                ->with('error', 'Une ville avec ce nom existe déjà');
         }
 
         City::create($request->all());
@@ -34,7 +34,7 @@ class CityController extends Controller
     {
         $city = City::findOrfail($id);
 
-        return view('admin.editCity',compact('city'));
+        return view('admin.editCity', compact('city'));
     }
 
     public function updateCity(Request $request, $id)
@@ -58,5 +58,4 @@ class CityController extends Controller
         return redirect()->route('cities.index')
             ->with('success', 'La ville a été supprimée avec succès');
     }
-
 }

@@ -12,20 +12,21 @@ class AdminController extends Controller
     //     return view('admin.dashboard');
     // }
 
-    public function error() {
+    public function error()
+    {
         return view('admin.403');
     }
 
-    public function statistics() {
+    public function statistics()
+    {
 
         $userCount = User::exists() ? User::count() : 0;
         $cityCount = City::exists() ? City::count() : 0;
 
         return view('admin.dashboard', compact('userCount', 'cityCount'));
-
     }
 
-    
+
 
 
     // public function statistics() {

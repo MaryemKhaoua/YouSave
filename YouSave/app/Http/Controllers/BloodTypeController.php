@@ -35,7 +35,7 @@ class BloodTypeController extends Controller
 
         $result = $this->bloodService->createBlood($data);
 
-         if ($result === 'exists') {
+        if ($result === 'exists') {
             return redirect()->back()->with('error', 'Groupe sanguin déjà existant.');
         }
 
@@ -48,7 +48,9 @@ class BloodTypeController extends Controller
             'type' => 'required|string',
         ]);
 
-        return $this->bloodService->updateBlood($id, $data);
+         $this->bloodService->updateBlood($id, $data);
+        return redirect()->back()->with('success', 'Groupe sanguin mis à jour avec succès.');
+
     }
 
     public function destroy($id)

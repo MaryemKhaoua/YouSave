@@ -21,8 +21,9 @@ class AuthController extends Controller
         $bloods = BloodType::all();
         $cities = City::all();
 
-        return view('pages.auth.register', compact('bloods','cities'));
+        return view('pages.auth.register', compact('bloods', 'cities'));
     }
+
 
     /**
      * Show the form for creating a new resource.

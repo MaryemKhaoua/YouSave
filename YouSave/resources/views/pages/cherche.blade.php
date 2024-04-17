@@ -33,7 +33,6 @@
     .spn{
         font-weight: bold;
         color: #1f0303;
-
     }
 
     .icon-phone {
@@ -47,7 +46,33 @@
     .icon-city {
         color: rgb(112, 49, 49);
     }
+
+    
 </style>
+
+<div class="container mt-5 text-center">
+    <div class="form-group d-inline-block mx-2">
+        <select class="form-select" data-mdb-select-init data-mdb-filter="true" id="blood_type" name="blood_type_id">
+            <option selected disabled>Choisissez un type de sang</option>
+            <option value="" selected>Choose...</option>
+            @foreach($bloods as $blood)
+            <option value="{{ $blood->id }}">{{ $blood->type }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <div class="form-group d-inline-block mx-2">
+        <select class="form-select" data-mdb-select-init data-mdb-filter="true" id="city" name="city_id">
+            <option value="" selected>Choose...</option>
+            @foreach($cities as $city)
+            <option value="{{ $city->id }}">{{ $city->name }}</option>
+            @endforeach
+        </select>
+    </div>
+
+    <button type="button" class="btn btn-danger mx-2">Recherche</button>
+
+</div>
 
 <div class="container mt-5">
     <h1 class="blood-donation-heading">Trouvez des donneurs près de vous</h1>
@@ -67,7 +92,6 @@
                             <i class="fas fa-times-circle text-danger"></i> Pas Disponible
                         @endif
                     </p>
-
                 </div>
             </div>
         </div>
