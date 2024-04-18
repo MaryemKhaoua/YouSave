@@ -105,6 +105,18 @@
                                 <p class="text-muted mb-0">{{$user->bloodType->type}}</p>
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Disponibilité</p>
+                            </div>
+                            <div class="col-sm-9">
+                                @if($user->disponibility == 1)
+                                <i class="fas fa-check-circle text-success"></i> Disponible
+                            @else
+                                <i class="fas fa-times-circle text-danger"></i> Pas Disponible
+                            @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,6 +161,16 @@
                         <label for="blood_type">Type de sang</label>
                         <input type="text" class="form-control" id="blood_type" name="blood_type_id" value="{{ $user->BloodType->type }}">
                     </div>
+                    <div class="form-group">
+                        <label for="disponibility">Disponibilité</label>
+                        <select name="disponibility" id="disponibility" class="form-select">
+                            <option value="1" {{ $user->disponibility == 1 ? 'selected' : '' }}>Oui</option>
+                            <option value="0" {{ $user->disponibility == 0 ? 'selected' : '' }}>Pas maintenant</option>
+                        </select>
+                    </div>
+
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
