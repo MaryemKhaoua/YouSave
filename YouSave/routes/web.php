@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\BloodTypeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,9 +58,23 @@ Route::get('/', [UserController::class, 'create'])->name('home');
 Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page');
 
 Route::get('/users', [UserController::class, 'showUsers'])->name('users.show');
-
+//route for updating profil
 Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('update.profile');
 
+//route for posts
+Route::get('/posts', [PostController::class, 'index'])->name('post.index');
+Route::post('/posts/create', [PostController::class, 'store'])->name('posts.store');
+Route::put('/posts/{id}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{id}', [PostController::class, 'destroy'])->name('posts.delete');
+//route for comment
+Route::post('/comment/{postId}', [PostController::class, 'addComment'])->name('addComment');
+Route::put('/comment/{id}', [PostController::class, 'updateComment'])->name('updateComment');
+Route::delete('/comment/{id}', [PostController::class, 'deleteComment'])->name('deleteComment');
+
+//UserBan
+Route::get('/gestionUser', [UserController::class, 'gestionUser'])->name('gestionUser');
+Route::post('/updateUser/{id}', [UserController::class, 'updateUserRole'])->name('updateUser');
+Route::post('/banuser/{id}', [UserController::class, 'BanUser'])->name('banuser');
 
 
 //----------------------route for type blood details pages---------------------------

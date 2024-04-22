@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BloodType;
 use App\Models\City;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,33 +50,6 @@ class UserController extends Controller
     }
 //------------------------end view blood type---------------------
 
-//-----------------profil view------------------------------------
-
-    public function profil(){
-        $user = Auth::user();
-        return view('pages.profil', compact('user'));
-    }
-
-    //---------------update profil---------------
-
-    public function updateProfile(Request $request)
-    {
-        $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
-            // 'tele' => 'required|string|max:255',
-            // 'genre' => 'required|string|max:255',
-            // 'disponibility' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255',
-            'city_id' => 'required|exists:cities,id',
-            'blood_type_id' => 'required|exists:blood_types,id',
-        ]);
-
-        $user = auth()->user();
-        $user->update($request->all());
-
-        return redirect()->back()->with('success', 'Mise à jour du profil réussie');
-    }
 
 
     //-------------- list donneurs---------------
@@ -87,6 +61,33 @@ class UserController extends Controller
         $cities = City::all();
 
         return view('pages.cherche', compact('users','bloods','cities'));
+    }
+    public function gestionUser()
+    {
+        $users = User::paginate(5);
+        $roles = Role::all();
+
+        return view('admin.gestionUser',compact('users', 'roles'));
+    }
+
+    public function BanUser($id)
+    {
+        $user = User::find($id);
+
+        $user->status = 0;
+        $user->save();
+
+        return redirect()->back()->with('success', 'User Banned successfully!');
+    }
+
+    public function updateUserRole(Request $request, $id)
+    {
+        $user = User::find($id);
+
+        $user->role_id = $request->input('role');
+        $user->save();
+
+        return redirect()->back()->with('success', 'User updated successfully!');
     }
 
 }

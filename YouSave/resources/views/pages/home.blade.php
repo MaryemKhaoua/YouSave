@@ -119,7 +119,9 @@
                 <div class="buttons">
                     <a href="{{ route('register') }}" class="btn btn-primary custom-button">Je donne mon sang <span class="heart-icon">&hearts;</span></a>
                     <a href="{{ route('users.show') }}" id='btnS' class="btn btn-secondary custom-button">Besoin de sang</a>
+                    {{-- <a href="{{ route('post.index') }}" class="btn btn-success custom-button">Publier une demande de don de sang</a> --}}
                 </div>
+
 
             </div>
             <div class="right-side">
