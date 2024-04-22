@@ -10,7 +10,5 @@ interface BloodServiceInterface
 
     public function deleteBlood($id);
 
-    public function getBlood($id);
-
     public function getAllBlood();
 }

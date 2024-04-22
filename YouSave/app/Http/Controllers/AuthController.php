@@ -60,6 +60,8 @@ class AuthController extends Controller
             'city_id' => $request->input('city'),
             'blood_type_id' => $request->input('blood_type'),
         ]);
+        $user->role()->attach(2);
+
         $user->tele = $request->input('tele');
         $user->save();
         return redirect()->route('user.login');

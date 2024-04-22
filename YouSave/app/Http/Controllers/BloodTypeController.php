@@ -22,11 +22,6 @@ class BloodTypeController extends Controller
         return view('admin.createBlood', compact('bloods'));
     }
 
-    public function show($id)
-    {
-        return $this->bloodService->getBlood($id);
-    }
-
     public function store(Request $request)
     {
         $data = $request->validate([

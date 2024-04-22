@@ -19,12 +19,13 @@ class AdminController extends Controller
 
     public function statistics()
     {
+        $userCount = User::count();
+        $cityCount = City::count();
+        $bannedCount = User::where('status', 0)->count();
 
-        $userCount = User::exists() ? User::count() : 0;
-        $cityCount = City::exists() ? City::count() : 0;
-
-        return view('admin.dashboard', compact('userCount', 'cityCount'));
+        return view('admin.dashboard', compact('userCount', 'cityCount', 'bannedCount'));
     }
+
 
 
 

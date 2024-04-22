@@ -135,11 +135,18 @@
                 </div>
             </div>
         </div>
-
+        <div class="card-container">
+            <div class="card user-card">
+                <div class="card-title">Users</div>
+                <div class="card-content">
+                    <div>Banned Users</div>
+                    <div class="card-number">{{ $bannedCount }}</div>
+                </div>
+            </div>
 
         {{-- chart --}}
 
-            <canvas width="500"  id="myChart"></canvas>
+            {{-- <canvas width="500"  id="myChart"></canvas> --}}
 
    <!-- Script pour initialiser le graphique -->
    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

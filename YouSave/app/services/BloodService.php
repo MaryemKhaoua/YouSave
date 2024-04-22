@@ -29,11 +29,6 @@ class BloodService implements BloodServiceInterface
         return $this->bloodRepository->delete($id);
     }
 
-    public function getBlood($id)
-    {
-        return $this->bloodRepository->find($id);
-    }
-
     public function getAllBlood()
     {
         return $this->bloodRepository->all();

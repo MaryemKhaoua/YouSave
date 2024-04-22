@@ -34,11 +34,6 @@ class BloodRepository implements BloodRepositoryInterface
         return $blood;
     }
 
-    public function find($id)
-    {
-        return BloodType::findOrFail($id);
-    }
-
     public function all()
     {
         return BloodType::all();
