@@ -16,8 +16,8 @@
     <div class="container mt-5">
         <h1 class="mb-4" id="srch">À propos de YouSave</h1>
 
-        <div class="row">
-            <div class="col-md-6">
+        <div class="row" data-aos="flip-left">
+            <div  class="col-md-6">
                 <img src="./../images/apro1.jpg" alt="Image 1" class="img-fluid mb-3">
             </div>
             <div class="col-md-6 d-flex align-items-start">
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-4" data-aos="flip-left">
             <div class="col-md-6 order-md-2">
                 <img src="./../images/apro2.jpg" alt="Image 2" class="img-fluid mb-3">
             </div>
@@ -40,7 +40,7 @@
             </div>
         </div>
 
-        <div class="row mt-4">
+        <div class="row mt-4" data-aos="flip-left">
             <div class="col-md-6">
                 <img src="./../images/apro3.jpg" alt="Image 3" class="img-fluid mb-3">
             </div>
@@ -53,5 +53,9 @@
         </div>
     </div>
 </div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
+<script>
+    AOS.init();
+  </script>
 @endsection
