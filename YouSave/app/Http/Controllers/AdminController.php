@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -22,8 +23,10 @@ class AdminController extends Controller
         $userCount = User::count();
         $cityCount = City::count();
         $bannedCount = User::where('status', 0)->count();
+        $users = User::paginate(5);
+        $roles = Role::all();
 
-        return view('admin.dashboard', compact('userCount', 'cityCount', 'bannedCount'));
+        return view('admin.dashboard', compact('userCount', 'cityCount', 'bannedCount','users', 'roles'));
     }
 
 
