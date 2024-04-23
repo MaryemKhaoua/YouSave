@@ -29,7 +29,7 @@ Route::get('/register', [AuthController::class, 'index'])->name('register');
 Route::post('/register', [AuthController::class, 'store'])->name('user.register');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('user.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
-
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 //route for admin
 Route::get('/dashboard', [AdminController::class, 'statistics'])->name('dashboard');
 Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
@@ -72,9 +72,12 @@ Route::put('/comment/{id}', [PostController::class, 'updateComment'])->name('upd
 Route::delete('/comment/{id}', [PostController::class, 'deleteComment'])->name('deleteComment');
 
 //UserBan
-Route::get('/gestionUser', [UserController::class, 'gestionUser'])->name('gestionUser');
+Route::get('/gestionUser', [AdminController::class, 'gestionUser'])->name('gestionUser');
 Route::post('/updateUser/{id}', [UserController::class, 'updateUserRole'])->name('updateUser');
 Route::post('/banuser/{id}', [UserController::class, 'BanUser'])->name('banuser');
+
+//search
+Route::post('/search-users', [UserController::class, 'searchUsers'])->name('search.users');
 
 
 //----------------------route for type blood details pages---------------------------

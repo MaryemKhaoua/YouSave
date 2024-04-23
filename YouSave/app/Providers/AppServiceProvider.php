@@ -10,6 +10,7 @@ use App\repositories\IPostRepository;
 use App\repositories\PostRepository;
 use App\Services\BloodService;
 use App\Services\BloodServiceInterface;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -31,6 +32,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Paginator::useBootstrap();
     }
 }

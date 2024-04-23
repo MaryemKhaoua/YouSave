@@ -62,13 +62,19 @@ class UserController extends Controller
 
         return view('pages.cherche', compact('users','bloods','cities'));
     }
-    public function gestionUser()
-    {
-        $users = User::paginate(5);
-        $roles = Role::all();
 
-        return view('admin.gestionUser',compact('users', 'roles'));
+    public function profil(){
+        $user = Auth::user();
+        return view('pages.profil', compact('user'));
     }
+
+    // public function gestionUser()
+    // {
+    //     $users = User::paginate(5);
+    //     $roles = Role::all();
+
+    //     return view('admin.dashboard',compact('users', 'roles'));
+    // }
 
     public function BanUser($id)
     {
@@ -89,5 +95,8 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'User updated successfully!');
     }
+
+    //search
+
 
 }
