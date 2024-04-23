@@ -10,7 +10,7 @@ class PostRepository implements IPostRepository
     public function getAllPosts()
     {
 
-        return Post::all();
+        return Post::orderBy('created_at', 'desc')->get();
     }
 
     public function createPosts($data)
@@ -32,7 +32,7 @@ class PostRepository implements IPostRepository
 
         if ($post) {
             $post->delete();
-        
+
             return true;
         } else {
             return false;
