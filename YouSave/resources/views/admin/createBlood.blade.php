@@ -52,7 +52,6 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <!-- Update form goes here -->
                         <form method="POST" action="{{ route('bloods.update', $blood) }}">
                             @csrf
                             @method('PUT')

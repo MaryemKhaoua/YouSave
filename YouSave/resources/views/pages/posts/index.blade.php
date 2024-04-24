@@ -130,6 +130,7 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                {{ $comments->links()}}
                                 <div class="mt-3">
                                     <form action="{{ route('addComment', ['postId' => $post->id]) }}" method="post">
                                         @csrf
@@ -139,6 +140,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="modal fade" id="editModal{{ $post->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $post->id }}" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">

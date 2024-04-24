@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Blood;
 use App\Models\BloodType;
 use App\Models\City;
 use App\Models\User;
@@ -45,7 +44,13 @@ class AuthController extends Controller
     {
         // dd($request->all());
         $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
             'tele' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
+            'genre' => 'required|in:Homme,Femme',
+            'disponibility' => 'required|boolean',
+            'city' => 'required|exists:cities,id',
+            'blood_type' => 'required|exists:blood_types,id',
         ]);
         // dd($request->input('tele'));
 
@@ -111,10 +116,36 @@ class AuthController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
-    {
-        //
-    }
+/**
+ * Update the specified resource in storage.
+ */
+public function updateProfile(Request $request)
+{
+    $user = Auth::user();
+
+    $request->validate([
+        'nom' => 'required|string|max:255',
+        'prenom' => 'required|string|max:255',
+        'tele' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
+        'genre' => 'required|in:Male,Female,Other',
+        'disponibility' => 'required|boolean',
+        'city' => 'required|exists:cities,id',
+        'blood_type' => 'required|exists:blood_types,id',
+    ]);
+
+    $user->nom = $request->input('nom');
+    $user->prenom = $request->input('prenom');
+    $user->tele = $request->input('tele');
+    $user->genre = $request->input('genre');
+    $user->disponibility = $request->input('disponibility');
+    $user->city_id = $request->input('city');
+    $user->blood_type_id = $request->input('blood_type');
+
+    $user->save();
+
+    return redirect()->route('user.profil')->with('success', 'profil updated');
+}
+
 
     /**
      * Remove the specified resource from storage.

@@ -59,7 +59,7 @@ Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page')
 
 Route::get('/users', [UserController::class, 'showUsers'])->name('users.show');
 //route for updating profil
-Route::post('/update-profile', [UserController::class, 'updateProfile'])->name('update.profile');
+Route::post('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
 
 //route for posts
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');

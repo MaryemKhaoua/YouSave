@@ -37,7 +37,7 @@
                 <li>
                     <a href="#">
                         <span class="icon">
-                            <ion-icon name="settings-outline"></ion-icon>
+                            <ion-icon name="person-outline"></ion-icon>
                         </span>
                         <span class="title">Profil</span>
                     </a>
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="eye-outline"></ion-icon>
+                        <ion-icon name="people-outline"></ion-icon>
                     </div>
                 </div>
 
@@ -93,7 +93,7 @@
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="cart-outline"></ion-icon>
+                        <ion-icon name="ban-outline"></ion-icon>
                     </div>
                 </div>
 
@@ -104,7 +104,7 @@
                     </div>
 
                     <div class="iconBx">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        <ion-icon name="home-outline"></ion-icon>
                     </div>
                 </div>
 
@@ -152,7 +152,9 @@
                                     </td>
                                     @if ($user->status === 1)
                                     <td>Active</td>
-                                    <td> </tr>
+                                    <td>
+                                        
+                                    </tr>
                                         @endif
 
 

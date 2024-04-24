@@ -9,7 +9,7 @@ class CommentRepository implements IcommentRepository
 
     public function getAllComments()
     {
-        return Comment::all();
+        return Comment::paginate(5);
     }
 
     public function createComments($data)
