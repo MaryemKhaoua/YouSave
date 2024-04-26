@@ -43,8 +43,8 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        @if ($user->genre == "femme")
-                            <img src="./../images/profil.avif" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        @if ($user->genre == "Femme")
+                            <img src="./../images/profilF.avif" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         @else
                             <img src="./../images/homme.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         @endif
@@ -97,6 +97,16 @@
                             </div>
                         </div>
                         <hr>
+
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <p class="mb-0">Genre</p>
+                            </div>
+                            <div class="col-sm-9">
+                                <p class="text-muted mb-0">{{ $user->genre }}</p>
+                            </div>
+                        </div>
+                        <hr>
                         <div class="row">
                             <div class="col-sm-3">
                                 <p class="mb-0">Type de sang</p>
@@ -138,6 +148,7 @@
             <div class="modal-body">
                 <form id="updateProfileForm" action="{{ route('update.profile') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="form-group">
                         <label for="nom">Nom</label>
                         <input type="text" class="form-control" id="nom" name="nom" value="{{ $user->nom }}">
@@ -155,12 +166,40 @@
                         <input type="text" class="form-control" id="email" name="email" value="{{ $user->email }}">
                     </div>
                     <div class="form-group">
+                        <label for="genre">Genre</label>
+
+
+                        <select name="genre" >
+
+
+                                <option value="Homme" >Homme</option>
+                                <option value="Femme" >Femme</option>
+
+
+                        </select>
+
+
+                    </div>
+                    <div class="form-group">
                         <label for="city">Ville</label>
-                        <input type="text" class="form-control" id="city" name="city_id" value="{{ $user->city->name }}">
+                        <select name="city_id" id="">
+                        @foreach($cities as $city)
+
+                            <option value="{{$city->id}}" >{{ $city->name }}</option>
+
+                        @endforeach
+                    </select>
+
                     </div>
                     <div class="form-group">
                         <label for="blood_type">Type de sang</label>
-                        <input type="text" class="form-control" id="blood_type" name="blood_type_id" value="{{ $user->BloodType->type }}">
+                        <select name="blood_type_id" id="">
+                            @foreach($BludTypes as $BludType)
+
+                                <option value="{{$BludType->id}}" >{{ $BludType->type }}</option>
+
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="disponibility">Disponibilité</label>
@@ -171,14 +210,15 @@
                     </div>
 
                     </div>
-
+                    <button type="submit" > Enregistrer</button>
                 </form>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
-                <a href="#" class="btn btn-info" onclick="document.getElementById('updateProfileForm').submit()">Enregistrer</a>
             </div>
         </div>
+
     </div>
 </div>
 

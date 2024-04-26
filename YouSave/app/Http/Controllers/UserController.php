@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     public function create(){
+        // dd(Auth::user()->role[0]->id==1);
         return view('pages.home');
     }
 
@@ -65,7 +66,9 @@ class UserController extends Controller
 
     public function profil(){
         $user = Auth::user();
-        return view('pages.profil', compact('user'));
+        $cities = City::all();
+        $BludTypes = BloodType::all();
+        return view('pages.profil', compact('user','cities','BludTypes'));
     }
 
     // public function gestionUser()
@@ -76,27 +79,26 @@ class UserController extends Controller
     //     return view('admin.dashboard',compact('users', 'roles'));
     // }
 
-    public function BanUser($id)
+
+    //filter
+
+    public function filter(Request $request)
     {
-        $user = User::find($id);
+        $selectedCity = $request->input('city_id');
+        $selectedBlood = $request->input('blood_type_id');
 
-        $user->status = 0;
-        $user->save();
+        if ($selectedCity && $selectedBlood) {
+            $users = User::where('city_id', $selectedCity)
+                         ->where('blood_type_id', $selectedBlood)
+                         ->get();
+        } else {
+            $users = User::all();
+        }
 
-        return redirect()->back()->with('success', 'User Banned successfully!');
+        $cities = City::all();
+        $bloods = BloodType::all();
+
+        return view('pages.cherche', compact('users', 'cities', 'bloods'));
     }
-
-    public function updateUserRole(Request $request, $id)
-    {
-        $user = User::find($id);
-
-        $user->role_id = $request->input('role');
-        $user->save();
-
-        return redirect()->back()->with('success', 'User updated successfully!');
-    }
-
-    //search
-
 
 }

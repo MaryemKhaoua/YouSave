@@ -17,10 +17,13 @@
 
     .buttons {
     margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the buttons */
 }
 
 .buttons a.custom-button {
-    margin-right: 10px;
+    margin: 5px; 
     padding: 10px 20px;
     background-color: #f12a2a;
     color: #fff;
@@ -31,6 +34,11 @@
     text-decoration: none;
 }
 
+@media screen and (min-width: 768px) {
+    .buttons a.custom-button {
+        margin: 0 10px;
+    }
+}
 .buttons a.custom-button:hover {
     background-color: #970707;
 }
@@ -108,7 +116,10 @@
         text-align: center;
         margin-bottom: 2em;
     }
-
+#btnL{
+    margin-top: 1em;
+    margin-left: 1em;
+}
 </style>
 <main>
     <section>
@@ -119,7 +130,7 @@
                 <div class="buttons">
                     <a href="{{ route('register') }}" class="btn btn-primary custom-button">Je donne mon sang <span class="heart-icon">&hearts;</span></a>
                     <a href="{{ route('users.show') }}" id='btnS' class="btn btn-secondary custom-button">Besoin de sang</a>
-                    {{-- <a href="{{ route('post.index') }}" class="btn btn-success custom-button">Publier une demande de don de sang</a> --}}
+                    <a href="{{ route('post.index') }}" id='btnL' class="btn btn-success custom-button">Publier une demande de don de sang</a>
                 </div>
 
 

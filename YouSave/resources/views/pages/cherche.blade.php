@@ -47,30 +47,38 @@
         color: rgb(112, 49, 49);
     }
 
-    
+
 </style>
 
 <div class="container mt-5 text-center">
-    <div class="form-group d-inline-block mx-2">
-        <select class="form-select" data-mdb-select-init data-mdb-filter="true" id="blood_type" name="blood_type_id">
-            <option selected disabled>Choisissez un type de sang</option>
-            <option value="" selected>Choose...</option>
-            @foreach($bloods as $blood)
-            <option value="{{ $blood->id }}">{{ $blood->type }}</option>
-            @endforeach
-        </select>
+    @if(isset($message))
+    <div class="alert alert-info" role="alert">
+        {{ $message }}
     </div>
+@endif
+    <form action="{{ route('filter') }}" method="POST" class="form-inline">
+        @csrf
+        <div class="form-group d-inline-block mx-2">
+            <select class="form-select" data-mdb-select-init data-mdb-filter="true" id="blood_type" name="blood_type_id">
+                <option selected disabled>Choisissez un type de sang</option>
+                <option value="" selected>Choose...</option>
+                @foreach($bloods as $blood)
+                <option value="{{ $blood->id }}">{{ $blood->type }}</option>
+                @endforeach
+            </select>
+        </div>
 
-    <div class="form-group d-inline-block mx-2">
-        <select class="form-select" data-mdb-select-init data-mdb-filter="true" id="city" name="city_id">
-            <option value="" selected>Choose...</option>
-            @foreach($cities as $city)
-            <option value="{{ $city->id }}">{{ $city->name }}</option>
-            @endforeach
-        </select>
-    </div>
+        <div class="form-group d-inline-block mx-2">
+            <select class="form-select" data-mdb-select-init data-mdb-filter="true" id="city" name="city_id">
+                <option value="" selected>Choose...</option>
+                @foreach($cities as $city)
+                <option value="{{ $city->id }}">{{ $city->name }}</option>
+                @endforeach
+            </select>
+        </div>
 
-    <button type="button" class="btn btn-danger mx-2">Recherche</button>
+        <button type="submit" class="btn btn-danger mx-2">Recherche</button>
+    </form>
 
 </div>
 
@@ -80,7 +88,7 @@
         @foreach($users as $user)
         <div class="col-md-4 mb-4">
             <div class="user-card">
-                <div class="user-info">
+                <div class="user-info" data-aos="fade-up" data-aos-duration="3500">
                     <h5 class="user-name">{{ $user->nom }} {{ $user->prenom }}</h5>
                     <p class="user-details"><i class="fas fa-map-marker-alt icon icon-city"></i>  <span class="spn">Ville:</span> {{ $user->city->name }}</p>
                     <p class="user-details"><i class="fas fa-tint icon icon-type"></i>  <span class="spn">Type de Sang:</span> {{ $user->bloodType->type }}</p>
@@ -98,4 +106,9 @@
         @endforeach
     </div>
 </div>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+  </script>
+
 @endsection

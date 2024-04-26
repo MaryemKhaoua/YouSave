@@ -9,7 +9,7 @@
 @endif
 
 <main>
-    <div class="container text-center pt-5"> <!-- Center the table -->
+    <div class="container text-center pt-5"> 
         <div class="welcome-page mb-5">
             <h2 class="welcome-message">Gestion des utilisateurs</h2>
         </div>

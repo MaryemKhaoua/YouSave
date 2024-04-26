@@ -46,8 +46,8 @@
                                             <div class="form-outline flex-fill mb-0">
                                                 <select name="genre" id="genre" class="form-select">
                                                     <option value="" selected>Choose...</option>
-                                                    <option value="homme">Homme</option>
-                                                    <option value="femme">Femme</option>
+                                                    <option value="Homme">Homme</option>
+                                                    <option value="Femme">Femme</option>
                                                 </select>
                                             </div>
                                         </div>

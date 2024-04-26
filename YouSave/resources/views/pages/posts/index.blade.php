@@ -55,7 +55,7 @@
                             <div class="card-body">
                                 <div class="profile-options d-flex justify-content-between align-items-start mb-3">
                                     <div class="profile-info d-flex align-items-center">
-                                        @if ($post->user->genre == "femme")
+                                        @if ($post->user->genre == "Femme")
                                             <img src="./../images/profilF.avif" alt="avatar" class="rounded-circle img-fluid" style="width: 80px; height: 80px;">
                                         @else
                                             <img src="./../images/homme.png" alt="avatar" class="rounded-circle img-fluid" style="width: 80px; height: 80px;">
@@ -81,7 +81,7 @@
                                 @foreach($post->comments as $comment)
                                     <div class="comment d-flex justify-content-between align-items-start">
                                         <div class="profile-info d-flex align-items-center">
-                                            @if ($comment->user->genre == "femme")
+                                            @if ($comment->user->genre == "Femme")
                                                 <img src="./../images/profilF.avif" alt="avatar" class="rounded-circle img-fluid" style="width: 40px; height: 40px;">
                                             @else
                                                 <img src="./../images/homme.png" alt="avatar" class="rounded-circle img-fluid" style="width: 40px; height: 40px;">
@@ -89,17 +89,22 @@
                                             <h5 class="ml-2">{{ $comment->user->nom }} {{ $comment->user->prenom }}</h5>
                                         </div>
                                         <div class="dropdown">
+                                            {{-- @if(Auth::check() && Auth::user()->id === $post->user_id) --}}
                                             <button class="btn btn-danger dropdown-toggle" type="button" id="commentDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
+
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="commentDropdownMenu">
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editCommentModal{{ $comment->id }}">Modifier</a>
+                                                {{-- @if(Auth::user()->role[0]->id == 1) --}}
                                                 <form action="{{ route('deleteComment', $comment->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="dropdown-item">Supprimer</button>
                                                 </form>
+                                                {{-- @endif --}}
                                             </div>
+                                            {{-- @endif --}}
                                         </div>
                                     </div>
                                     <div class="comment-content">

@@ -22,14 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-
-//route for auth
-
-Route::get('/register', [AuthController::class, 'index'])->name('register');
-Route::post('/register', [AuthController::class, 'store'])->name('user.register');
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('user.login');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::middleware(['admin', 'auth'])->group(function () {
 //route for admin
 Route::get('/dashboard', [AdminController::class, 'statistics'])->name('dashboard');
 Route::get('/cities', [CityController::class, 'index'])->name('cities.index');
@@ -41,7 +34,21 @@ Route::get('/bloods', [BloodTypeController::class, 'index'])->name('bloods.index
 Route::post('/bloods', [BloodTypeController::class, 'store'])->name('bloods.store');
 Route::put('/bloods/{blood}', [BloodTypeController::class, 'update'])->name('bloods.update');
 Route::delete('/bloods/{blood}', [BloodTypeController::class, 'destroy'])->name('bloods.destroy');
-// statistics
+
+//UserBan
+Route::get('/gestionUser', [AdminController::class, 'gestionUser'])->name('gestionUser');
+Route::post('/updateUser/{id}', [AdminController::class, 'updateUserRole'])->name('updateUser');
+Route::post('/banuser/{id}', [AdminController::class, 'BanUser'])->name('banuser');
+//--------------------end rputes for admin ----------------------------------------
+});
+//route for auth
+
+Route::get('/register', [AuthController::class, 'index'])->name('register');
+Route::post('/register', [AuthController::class, 'store'])->name('user.register');
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('user.login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
 // Route::get('/statistics', [AdminController::class, 'statistics'])->name('admin.statistics');
 
 
@@ -59,7 +66,7 @@ Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page')
 
 Route::get('/users', [UserController::class, 'showUsers'])->name('users.show');
 //route for updating profil
-Route::post('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
+Route::put('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
 
 //route for posts
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
@@ -71,13 +78,10 @@ Route::post('/comment/{postId}', [PostController::class, 'addComment'])->name('a
 Route::put('/comment/{id}', [PostController::class, 'updateComment'])->name('updateComment');
 Route::delete('/comment/{id}', [PostController::class, 'deleteComment'])->name('deleteComment');
 
-//UserBan
-Route::get('/gestionUser', [AdminController::class, 'gestionUser'])->name('gestionUser');
-Route::post('/updateUser/{id}', [UserController::class, 'updateUserRole'])->name('updateUser');
-Route::post('/banuser/{id}', [UserController::class, 'BanUser'])->name('banuser');
 
-//search
-Route::post('/search-users', [UserController::class, 'searchUsers'])->name('search.users');
+//filter
+Route::post('/filter', [UserController::class, 'filter'])->name('filter');
+
 
 
 //----------------------route for type blood details pages---------------------------

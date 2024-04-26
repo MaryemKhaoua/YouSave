@@ -10,14 +10,14 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: #ae0505;">Sign up</p>
-                                <form method="post" action="{{ route('user.login') }}" class="mx-1 mx-md-4">
+                                <form id="loginForm" method="post" action="{{ route('user.login') }}" class="mx-1 mx-md-4">
                                     @csrf
                                     <div class="mb-4">
                                         <label for="form3Example3c" class="form-label" style="color: #ae0505;">Email</label>
                                         <div class="d-flex flex-row align-items-center">
                                             <i class="fas fa-envelope fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="email" id="form3Example3c" name="email" class="form-control" />
+                                                <input type="email" id="email" name="email" class="form-control"  />
                                             </div>
                                         </div>
                                     </div>
@@ -26,7 +26,7 @@
                                         <div class="d-flex flex-row align-items-center">
                                             <i class="fas fa-lock fa-lg me-3 fa-fw" style="color: #ae0505;"></i>
                                             <div class="form-outline flex-fill mb-0">
-                                                <input type="password" id="form3Example4c" name="password" class="form-control" />
+                                                <input type="password" id="password" name="password" class="form-control"  />
                                             </div>
                                         </div>
                                     </div>
@@ -44,6 +44,18 @@
             </div>
         </div>
     </div>
-</section
+</section>
+
+<script>
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+
+        if (!email || !password) {
+            event.preventDefault();
+            alert("remplir tous les champs");
+        }
+    });
+</script>
 
 @endsection
