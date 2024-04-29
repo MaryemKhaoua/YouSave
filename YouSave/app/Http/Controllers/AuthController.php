@@ -58,7 +58,7 @@ class AuthController extends Controller
         ]);
         $user->role()->attach(2);
 
-        
+
         return redirect()->route('user.login');
     }
 
@@ -112,16 +112,6 @@ class AuthController extends Controller
 public function updateProfile(Request $request)
 {
     $user = Auth::user();
-
-    // $request->validate([
-    //     'nom' => 'required|string|max:255',
-    //     'prenom' => 'required|string|max:255',
-    //     'tele' => 'required|min:8|max:11|regex:/^([0-9\s\-\+\(\)]*)$/',
-    //     'genre' => 'required|in:Male,Female,Other',
-    //     'disponibility' => 'required|boolean',
-    //     'city' => 'required|exists:cities,id',
-    //     'blood_type' => 'required|exists:blood_types,id',
-    // ]);
 
     $user->nom = $request->nom;
     $user->prenom = $request->prenom;
