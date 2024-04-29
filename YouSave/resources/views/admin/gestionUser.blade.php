@@ -9,7 +9,7 @@
 @endif
 
 <main>
-    <div class="container text-center pt-5"> 
+    <div class="container text-center pt-5">
         <div class="welcome-page mb-5">
             <h2 class="welcome-message">Gestion des utilisateurs</h2>
         </div>
@@ -45,7 +45,7 @@
                                         <h5 class="modal-title" id="exampleModalLabel">Edit Role</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
+                                    {{-- <div class="modal-body">
                                         <div class="mb-3">
                                             <label for="form4Example1" class="form-label">User Role</label>
                                             <select id="role" name="role" class="form-control">
@@ -54,24 +54,50 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-light" data-bs-dismiss="modal">Fermer</button>
-                                        <button name="submit" type="submit" value="update" class="btn btn-danger">Modifier</button>
+                                        <form method="POST" action="{{ route('updateUser', $user->id) }}">
+                                            @csrf
+                                            @method('PUT')
+
+                                            <label for="role_id">Select Role:</label>
+                                            <select name="role_id" id="role_id">
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                                @endforeach
+                                            </select>
+
+                                            <button type="submit">Update Role</button>
+                                        </form>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
                         <!-- End Edit Modal -->
-                        <form action="{{route('banuser', $user->id)}}" method="POST">
+                        <form action="{{ route('banuser', $user->id) }}" method="POST" style="display: inline-block;">
                             @csrf
                             @method('POST')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir banner cet utilisateur ?')">Banner</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Êtes-vous sûr de vouloir bannir cet utilisateur ?')">Bannir</button>
+                        </form>
+
+                        <form action="{{ route('unbanUser', $user->id) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-success" onclick="return confirm('Êtes-vous sûr de vouloir débannir cet utilisateur ?')">Débannir</button>
                         </form>
                     </td>
                     @else
                     <td style="color: red;">Banned</td>
-                    <td>-</td>
+                    <td>
+                        <form action="{{ route('unbanUser', $user->id) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('PUT')
+                            <button type="submit" class="btn btn-success" onclick="return confirm('Êtes-vous sûr de vouloir débannir cet utilisateur ?')">Débannir</button>
+                        </form>
+                    </td>
                     @endif
                 </tr>
                 @endforeach

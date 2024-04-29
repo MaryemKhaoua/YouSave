@@ -9,6 +9,10 @@
         .content-container {
             margin-top: 4em;
         }
+        #post{
+            color: red;
+            font-weight: bold;
+        }
     </style>
 
     <div class="container content-container">
@@ -37,13 +41,23 @@
                 <div class="card">
                     <div class="card-header custom-card">Publier une demande de don de sang</div>
                     <div class="card-body custom-card">
-                        <form method="post" action="{{ route('posts.store') }}">
-                            @csrf
-                            <div class="form-group">
-                                <textarea class="form-control" name="content" placeholder="Exprimez votre besoin de don de sang..."></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-danger">Publier</button>
-                        </form>
+                        @if (auth()->user() && auth()->user()->status != 0)
+                            <form method="post" action="{{ route('posts.store') }}">
+                                @csrf
+                                <div class="form-group">
+                                    <textarea class="form-control" name="content" placeholder="Exprimez votre besoin de don de sang..."></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-danger">Publier</button>
+                            </form>
+                            @elseif (!auth()->check())
+                            <p id="post">Connectez-vous pour publier une demande de don de sang.<br>
+                                <a href="/register">Register</a>
+                            </p>
+                        @else
+                            <pid="post">Vous êtes interdit de publier des posts.</pid=>
+                        @endif
+                    </div>
+                </div>
                     </div>
                 </div>
 
@@ -61,7 +75,13 @@
                                             <img src="./../images/homme.png" alt="avatar" class="rounded-circle img-fluid" style="width: 80px; height: 80px;">
                                         @endif
                                         <h5 class="ml-3">{{ $post->user->nom }} {{ $post->user->prenom }}</h5>
+                                        <div class="ml-auto">
+                                            <span style="font-size: 1em; margin-left: 10px; color:rgb(60, 1, 1);">
+                                                {{ $post->created_at->format('Y-m-d H:i:s') }}
+                                            </span>
+                                        </div>
                                     </div>
+                                    @if(Auth::check() && Auth::user()->id === $post->user_id || Auth::user()->role[0]->id == 1)
                                     <div class="dropdown">
                                         <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v"></i>
@@ -73,8 +93,10 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="dropdown-item">Supprimer</button>
                                             </form>
+                                    
                                         </div>
                                     </div>
+                                    @endif
                                 </div>
                                 <p class="card-text">{{ $post->content }}</p>
                                 <hr>
@@ -87,24 +109,31 @@
                                                 <img src="./../images/homme.png" alt="avatar" class="rounded-circle img-fluid" style="width: 40px; height: 40px;">
                                             @endif
                                             <h5 class="ml-2">{{ $comment->user->nom }} {{ $comment->user->prenom }}</h5>
+                                            <div class="ml-auto">
+                                                <span style="font-size: 1em; margin-left: 10px; color:rgb(60, 1, 1);">
+                                                    {{ $comment->created_at}}
+                                                </span>
+                                            </div>
                                         </div>
                                         <div class="dropdown">
-                                            {{-- @if(Auth::check() && Auth::user()->id === $post->user_id) --}}
+
+                                         @if(Auth::check() && Auth::user()->id === $comment->user_id || Auth::user()->role[0]->id == 1)
+
                                             <button class="btn btn-danger dropdown-toggle" type="button" id="commentDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
 
                                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="commentDropdownMenu">
                                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#editCommentModal{{ $comment->id }}">Modifier</a>
-                                                {{-- @if(Auth::user()->role[0]->id == 1) --}}
+
                                                 <form action="{{ route('deleteComment', $comment->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
                                                     <button type="submit" class="dropdown-item">Supprimer</button>
                                                 </form>
-                                                {{-- @endif --}}
+
                                             </div>
-                                            {{-- @endif --}}
+                                             @endif
                                         </div>
                                     </div>
                                     <div class="comment-content">
@@ -135,7 +164,7 @@
                                         </div>
                                     </div>
                                 @endforeach
-                                {{ $comments->links()}}
+                                {{-- {{ $comments->links()}} --}}
                                 <div class="mt-3">
                                     <form action="{{ route('addComment', ['postId' => $post->id]) }}" method="post">
                                         @csrf

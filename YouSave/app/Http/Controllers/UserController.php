@@ -67,17 +67,11 @@ class UserController extends Controller
     public function profil(){
         $user = Auth::user();
         $cities = City::all();
-        $BludTypes = BloodType::all();
-        return view('pages.profil', compact('user','cities','BludTypes'));
+        $bloods = BloodType::all();
+        return view('pages.profil', compact('user','cities','bloods'));
     }
 
-    // public function gestionUser()
-    // {
-    //     $users = User::paginate(5);
-    //     $roles = Role::all();
 
-    //     return view('admin.dashboard',compact('users', 'roles'));
-    // }
 
 
     //filter

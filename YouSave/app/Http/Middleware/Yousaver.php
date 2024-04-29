@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class Yousaver
@@ -15,6 +16,14 @@ class Yousaver
      */
     public function handle(Request $request, Closure $next): Response
     {
-        return $next($request);
+        $user = Auth::user();
+        foreach ($user->role as $role) {
+
+            if ($role->id == 1 || $role->id == 2) {
+                return $next($request);
+            }
+        }
+        return response()->view('admin.403', [], 403);
+
     }
 }

@@ -10,6 +10,15 @@
                         <div class="row justify-content-center">
                             <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4" style="color: #ae0505;">Sign up</p>
+                                @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            {{-- <li>{{ $error }}</li> --}}
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                                 <form method="post" action="{{ route('user.register') }}" class="mx-1 mx-md-4">
                                     @csrf
                                     <div class="mb-4">
@@ -20,6 +29,9 @@
                                                 <input type="text" id="form3Example1c" name="nom" class="form-control" />
                                             </div>
                                         </div>
+                                        @error('nom')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="form3Example1c" class="form-label" style="color: #ae0505;">Prénom</label>
@@ -29,6 +41,9 @@
                                                 <input type="text" id="form3Example1c" name="prenom" class="form-control" />
                                             </div>
                                         </div>
+                                        @error('prenom')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="form3Example1c" class="form-label" style="color: #ae0505;">Phone</label>
@@ -38,6 +53,9 @@
                                                 <input type="tel" id="form3Example1c" name="tele" class="form-control" />
                                             </div>
                                         </div>
+                                        @error('tele')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="genre" class="form-label" style="color: #ae0505;">Genre</label>
@@ -51,6 +69,9 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @error('genre')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-4">
@@ -66,6 +87,9 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @error('blood_type')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
 
                                     <div class="mb-4">
@@ -81,6 +105,9 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @error('city')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="disponibility" class="form-label" style="color: #ae0505;">Prêt à donner</label>
@@ -93,6 +120,9 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @error('disponibility')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="form3Example3c" class="form-label" style="color: #ae0505;">Email</label>
@@ -102,6 +132,9 @@
                                                 <input type="email" id="form3Example3c" name="email" class="form-control" />
                                             </div>
                                         </div>
+                                        @error('email')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="mb-4">
                                         <label for="form3Example4c" class="form-label" style="color: #ae0505;">Password</label>
@@ -111,6 +144,9 @@
                                                 <input type="password" id="form3Example4c" name="password" class="form-control" />
                                             </div>
                                         </div>
+                                        @error('password')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                         <button type="submit" class="btn btn-primary btn-lg" style="background-color: #ae0505;">Register</button>

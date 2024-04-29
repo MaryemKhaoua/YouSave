@@ -37,8 +37,9 @@ Route::delete('/bloods/{blood}', [BloodTypeController::class, 'destroy'])->name(
 
 //UserBan
 Route::get('/gestionUser', [AdminController::class, 'gestionUser'])->name('gestionUser');
-Route::post('/updateUser/{id}', [AdminController::class, 'updateUserRole'])->name('updateUser');
+Route::put('/updateUser/{id}', [AdminController::class, 'updateUserRole'])->name('updateUser');
 Route::post('/banuser/{id}', [AdminController::class, 'BanUser'])->name('banuser');
+Route::put('/unbanUser/{id}', [AdminController::class, 'unbanUser'])->name('unbanUser');
 //--------------------end rputes for admin ----------------------------------------
 });
 //route for auth
@@ -49,12 +50,7 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('user.login
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Route::get('/statistics', [AdminController::class, 'statistics'])->name('admin.statistics');
 
-
-//route for testing error
-
-Route::get('/403', [AdminController::class, 'error'])->name('error');
 
 
 
@@ -65,8 +61,6 @@ Route::get('/', [UserController::class, 'create'])->name('home');
 Route::get('/apropos', [UserController::class, 'apropos'])->name('apropos.page');
 
 Route::get('/users', [UserController::class, 'showUsers'])->name('users.show');
-//route for updating profil
-Route::put('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
 
 //route for posts
 Route::get('/posts', [PostController::class, 'index'])->name('post.index');
@@ -96,6 +90,7 @@ Route::get('/omoins', [UserController::class, 'omoins'])->name('omoins.page');
 //--------------end route blood type --------------------------------------
 
 
-
-//--------------user auth---------
+Route::middleware(['yousaver', 'auth'])->group(function () {
 Route::get('/profil', [UserController::class, 'profil'])->name('user.profil');
+Route::put('/update-profile', [AuthController::class, 'updateProfile'])->name('update.profile');
+});

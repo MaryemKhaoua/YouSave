@@ -35,14 +35,25 @@ class PostController extends Controller
             'content' => 'required'
         ]);
 
-        $data = $request->all();
+        if (auth()->check()) {
+            $user = auth()->user();
 
-        $data['user_id'] = auth()->id();
+            if ($user->status == 0) {
+                return redirect()->back()->with('error', 'Vous êtes interdit de publier des posts.');
+            }
 
-        $this->post->createPosts($data);
+            $data = $request->all();
+            $data['user_id'] = $user->id;
 
-        return redirect('/posts');
+            $this->post->createPosts($data);
+
+            return redirect('/posts')->with('success', 'Post created successfully!');
+        } else {
+            return redirect()->route('login')->with('error', 'Vous devez être connecté pour ajouter un post');
+        }
     }
+
+
 
     public function update(Request $request, $id)
     {

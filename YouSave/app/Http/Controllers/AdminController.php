@@ -38,11 +38,31 @@ class AdminController extends Controller
         return redirect()->back()->with('success', 'User Banned successfully!');
     }
 
+    public function unbanUser($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Utilisateur non trouvé.');
+        }
+
+        if ($user->status == 0) {
+            $user->status = 1;
+            $user->save();
+
+            return redirect()->back()->with('success', 'utilisateur débanni avec succès!');
+        } else {
+            return redirect()->back()->with('error', 'cet utilisateur nest pas actuellement banni.');
+        }
+    }
+
+
     public function updateUserRole(Request $request, $id)
     {
         $user = User::find($id);
 
-        $user->role_id = $request->input('role');
+        $user->role()->sync([$request->input('role_id')]);
+        // dd($request->input('role'));
         $user->save();
 
         return redirect()->back()->with('success', 'User updated successfully!');

@@ -24,16 +24,7 @@ class AuthController extends Controller
     }
 
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    // public function create()
-    // {
-    //     $bloods = BloodType::all();
 
-    //     return view('pages.auth.register', compact('bloods'));
-
-    // }
 
     /**
      * Store a newly created resource in storage.
@@ -55,7 +46,7 @@ class AuthController extends Controller
         // dd($request->input('tele'));
 
         $user =  User::create([
-            'nom' => $request->nom,
+            'nom' => $request->input('nom'),
             'prenom' => $request->input('prenom'),
             'tele' => $request->input('tele'),
             'genre' => $request->input('genre'),
@@ -67,8 +58,7 @@ class AuthController extends Controller
         ]);
         $user->role()->attach(2);
 
-        // $user->tele = $request->input('tele');
-        $user->save();
+        
         return redirect()->route('user.login');
     }
 

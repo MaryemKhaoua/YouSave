@@ -51,7 +51,6 @@
                         <h5 class="my-3">{{ $user->nom }} {{ $user->prenom }}</h5>
                         <p class="text-muted mb-1">Donateur</p>
                         <p class="text-muted mb-4">{{ $user->city->name }}</p>
-                        <!-- Button trigger modal -->
                         <button type="button" class="update-profile-btn" data-toggle="modal" data-target="#updateProfileModal">
                             Mettre à jour le profil
                         </button>
@@ -167,37 +166,30 @@
                     </div>
                     <div class="form-group">
                         <label for="genre">Genre</label>
-
-
-                        <select name="genre" >
-
-
-                                <option value="Homme" >Homme</option>
-                                <option value="Femme" >Femme</option>
-
-
+                        <select name="genre" id="genre" class="form-select">
+                            <option value="{{ $user->genre }}" selected>{{ $user->genre }}</option>
+                            <option value="Homme">Homme</option>
+                            <option value="Femme">Femme</option>
                         </select>
 
 
                     </div>
                     <div class="form-group">
                         <label for="city">Ville</label>
-                        <select name="city_id" id="">
-                        @foreach($cities as $city)
-
-                            <option value="{{$city->id}}" >{{ $city->name }}</option>
-
-                        @endforeach
-                    </select>
+                        <select name="city_id" id="city" class="form-select">
+                            <option value="{{ $user->city->id }}" selected>{{ $user->city->name }}</option>
+                            @foreach($cities as $city)
+                            <option value="{{ $city->id }}">{{ $city->name }}</option>
+                            @endforeach
+                        </select>
 
                     </div>
                     <div class="form-group">
                         <label for="blood_type">Type de sang</label>
-                        <select name="blood_type_id" id="">
-                            @foreach($BludTypes as $BludType)
-
-                                <option value="{{$BludType->id}}" >{{ $BludType->type }}</option>
-
+                        <select name="blood_type_id" id="blood_type" class="form-select">
+                            <option value="{{ $user->bloodType->id }}" selected>{{ $user->bloodType->type }}</option>
+                            @foreach($bloods as $blood)
+                            <option value="{{ $blood->id }}">{{ $blood->type }}</option>
                             @endforeach
                         </select>
                     </div>
